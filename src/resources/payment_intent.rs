@@ -289,7 +289,7 @@ pub enum PaymentErrorType {
 //       that all of the variants are _always_ the same.
 //
 //       In that case this can be replaced with a deprecated type alias.
-/// Represents the way a `PaymentIntent` needs to be fulfilled. 
+/// Represents the way a `PaymentIntent` needs to be fulfilled.
 #[derive(Deserialize, Serialize, PartialEq, Debug, Clone, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentMethodType {
@@ -470,6 +470,8 @@ pub struct PaymentIntentUpdateParams<'a> {
     pub description: Option<&'a str>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<Metadata>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_method: Option<&'a str>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub receipt_email: Option<&'a str>,
     #[serde(skip_serializing_if = "Option::is_none")]
